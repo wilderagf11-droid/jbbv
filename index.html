@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Invitación Revelación de Sexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+font-family: 'Segoe UI', sans-serif;
+background:linear-gradient(135deg,#f5efe4,#d7c3a5);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:20px;
+max-width:380px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+animation:fade 1.5s ease;
+}
+
+h1{
+color:#7a5b35;
+margin-bottom:10px;
+}
+
+p{
+color:#5e4b2d;
+line-height:1.5;
+}
+
+.parents{
+font-size:20px;
+font-weight:bold;
+margin:10px 0;
+color:#7a5b35;
+}
+
+.date{
+margin-top:10px;
+font-weight:bold;
+}
+
+.address{
+margin-top:10px;
+font-size:14px;
+}
+
+.counter{
+margin:15px 0;
+font-size:16px;
+color:#6a5234;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:25px;
+margin-top:8px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.boy{
+background:#d9c3a2;
+color:#4a3823;
+}
+
+.girl{
+background:#bfa27a;
+color:white;
+}
+
+.map{
+background:#7a5b35;
+color:white;
+}
+
+.rsvp{
+background:#cbb18d;
+color:#3a2a16;
+}
+
+.item{
+position:absolute;
+animation:float 8s linear infinite;
+font-size:22px;
+}
+
+@keyframes float{
+from{transform:translateY(100vh)}
+to{transform:translateY(-10vh)}
+}
+
+@keyframes fade{
+from{opacity:0;transform:scale(0.8)}
+to{opacity:1;transform:scale(1)}
+}
+
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/22/audio_9a5c7a2f1d.mp3">
+</audio>
+
+<div class="container">
+
+<h1>✨ Revelación de Sexo ✨</h1>
+
+<p>
+Con mucha ilusión queremos invitarte
+a compartir uno de los momentos
+más especiales de nuestras vidas.
+</p>
+
+<div class="parents">
+Jesús Anuel & Luciana Ocando
+</div>
+
+<p>
+Acompáñanos a descubrir
+si nuestro bebé será
+💙 niño o 💖 niña
+</p>
+
+<div class="date">
+📅 4 de Abril  
+⏰ 5:00 PM
+</div>
+
+<div class="address">
+📍 3726 Manson Pike  
+Oficina de Eventos
+</div>
+
+<div class="counter" id="countdown"></div>
+
+<button class="boy" onclick="team('boy')">💙 Team Niño</button>
+
+<button class="girl" onclick="team('girl')">💖 Team Niña</button>
+
+<button class="map" onclick="map()">📍 Cómo llegar</button>
+
+<button class="rsvp" onclick="rsvp()">📲 Confirmar asistencia</button>
+
+<p>✨ ¡Te esperamos! ✨</p>
+
+</div>
+
+<script>
+
+function map(){
+window.open("https://www.google.com/maps/search/?api=1&query=3726+Manson+Pike");
+}
+
+function rsvp(){
+const msg=encodeURIComponent("Hola, confirmo mi asistencia a la revelación de sexo 🎉");
+window.open("https://wa.me/?text="+msg);
+}
+
+function team(type){
+
+alert(type=="boy" ? "Elegiste Team Niño 💙" : "Elegiste Team Niña 💖");
+
+for(let i=0;i<30;i++){
+
+let conf=document.createElement("div");
+
+conf.innerHTML="🎉";
+
+conf.style.position="absolute";
+conf.style.left=Math.random()*100+"vw";
+conf.style.top="0";
+conf.style.fontSize="22px";
+conf.style.animation="float 4s linear";
+
+document.body.appendChild(conf);
+
+setTimeout(()=>conf.remove(),4000);
+
+}
+
+}
+
+const eventDate=new Date("April 4, 2026 17:00:00").getTime();
+
+setInterval(()=>{
+
+const now=new Date().getTime();
+const dist=eventDate-now;
+
+const days=Math.floor(dist/(1000*60*60*24));
+const hours=Math.floor((dist%(1000*60*60*24))/(1000*60*60));
+const minutes=Math.floor((dist%(1000*60*60))/(1000*60));
+
+document.getElementById("countdown").innerHTML=
+"⏳ Faltan "+days+" días "+hours+" horas "+minutes+" minutos";
+
+},1000);
+
+const icons=["🎈","🤎","⭐"];
+
+for(let i=0;i<25;i++){
+
+let el=document.createElement("div");
+
+el.className="item";
+el.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+
+el.style.left=Math.random()*100+"vw";
+el.style.fontSize=(20+Math.random()*20)+"px";
+el.style.animationDuration=(5+Math.random()*8)+"s";
+
+document.body.appendChild(el);
+
+}
+
+</script>
+
+</body>
+</html>
